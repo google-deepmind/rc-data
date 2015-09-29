@@ -21,12 +21,10 @@ year = "2015",
 
 ## Prerequisites
 
-Python 2.7 and the following packages:
+Python 2.7, `wget`, `libxml2`, `libxslt` and `virtualenv`.
 
 ```
-sudo pip install lxml
-sudo pip install cchardet
-sudo pip install requests
+sudo pip install virtualenv
 ```
 
 ## Download Script
@@ -45,6 +43,22 @@ wget https://storage.googleapis.com/deepmind-data/20150824/data.tar.gz -O - | ta
 
 The news article metadata is ~1 GB.
 
+## Enter Virtual Environment and Install Packages
+
+```
+virtualenv venv
+source venv/bin/activate
+pip install lxml==3.3.3
+pip install cchardet==0.3.5
+pip install requests==2.2.1
+```
+
+You may need to install `libxml2` development packages to install `lxml`:
+
+```
+sudo apt-get install libxml2-dev libxslt-dev
+```
+
 ## Download URLs
 
 ```
@@ -56,7 +70,7 @@ unavailable. The script can be run again and will cache
 URLs that already have been downloaded. Generation of questions can run
 without all URLs downloaded successfully.
 
-## Generate questions
+## Generate Questions
 
 ```
 python generate_questions.py --corpus=[cnn/dailymail] --mode=generate
@@ -77,4 +91,10 @@ Questions are stored in [cnn/dailymail]/questions/ in the following format:
 [Answer]
 
 [Entity mapping]
+```
+
+## Deactivate Virtual Environment
+
+```
+deactivate
 ```
