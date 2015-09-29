@@ -24,7 +24,7 @@ year = "2015",
 Python 2.7 and the following packages:
 
 ```
-pip install lxml
+sudo pip install lxml
 sudo pip install cchardet
 sudo pip install requests
 ```
