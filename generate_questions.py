@@ -372,7 +372,7 @@ def WriteStory(story, corpus):
 
 
 def LoadTokenMapping(filename):
-  """Loads an token mapping from the given filename.
+  """Loads a token mapping from the given filename.
 
   Args:
     filename: The filename containing the token mapping.

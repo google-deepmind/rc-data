@@ -21,7 +21,8 @@ year = "2015",
 
 ## Prerequisites
 
-Python 2.7, `wget`, `libxml2`, `libxslt` and `virtualenv`.
+Python 2.7, `wget`, `libxml2`, `libxslt` and `virtualenv`. `libxml2` must be
+version 2.9.1.
 
 ```
 sudo pip install virtualenv
