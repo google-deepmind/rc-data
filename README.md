@@ -4,7 +4,7 @@ This repository contains a script to generate question/answer pairs using
 CNN and Daily Mail articles downloaded from the Wayback Machine.
 
 For a detailed description of this corpus please read:
-Teaching Machines to Read and Comprehend, Hermann et al., NIPS 2015.
+[Teaching Machines to Read and Comprehend][arxiv], Hermann et al., NIPS 2015.
 Please cite the paper if you use this corpus in your work.
 
 ### Bibtex
@@ -99,3 +99,6 @@ Questions are stored in [cnn/dailymail]/questions/ in the following format:
 ```
 deactivate
 ```
+
+
+[arxiv]: http://arxiv.org/abs/1506.03340
