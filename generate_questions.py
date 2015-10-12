@@ -31,6 +31,7 @@ import time
 import cchardet as chardet
 from lxml import html
 import requests
+import socket
 
 
 class Story(namedtuple('StoryBase', 'url content highlights')):
@@ -195,13 +196,14 @@ def WaybackUrl(urls, max_attempts=6):
       (url, max_attempts))
 
 
-def DownloadUrl(url, corpus, max_attempts=5):
+def DownloadUrl(url, corpus, max_attempts=5, timeout=5):
   """Downloads a URL.
 
   Args:
     url: The URL.
     corpus: The corpus of the URL.
     max_attempts: Max attempts for downloading the URL.
+    timeout: Connection timeout in seconds for each attempt.
 
   Returns:
     The HTML at the URL or None if the request failed.
@@ -217,7 +219,7 @@ def DownloadUrl(url, corpus, max_attempts=5):
 
   while attempts < max_attempts:
     try:
-      req = requests.get(url, allow_redirects=False)
+      req = requests.get(url, allow_redirects=False, timeout=timeout)
 
       if req.status_code == requests.codes.ok:
         content = req.text.encode(req.encoding)
@@ -233,6 +235,10 @@ def DownloadUrl(url, corpus, max_attempts=5):
       return None
     except requests.exceptions.ChunkedEncodingError:
       return None
+    except requests.exceptions.Timeout:
+      pass
+    except socket.timeout:
+      pass
 
     # Exponential back-off.
     time.sleep(math.pow(2, attempts))
@@ -684,11 +690,17 @@ def DownloadMode(corpus, request_parallelism):
 
     progress_bar = ProgressBar(len(urls))
 
-    for url, story_html in results:
-      if not story_html:
-        missing_urls.append(url)
+    collected_urls = []
+    try:
+      for url, story_html in results:
+        if story_html:
+          collected_urls.append(url)
 
-      progress_bar.Increment()
+        progress_bar.Increment()
+    except KeyboardInterrupt:
+        print('Interrupted by user')
+        missing_urls.extend(set(urls) - set(collected_urls))
+
 
   WriteUrls('%s/missing_urls.txt' % corpus, missing_urls)
 
