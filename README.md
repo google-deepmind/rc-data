@@ -49,6 +49,7 @@ The news article metadata is ~1 GB.
 ```
 virtualenv venv
 source venv/bin/activate
+wget https://github.com/deepmind/rc-data/raw/master/requirements.txt
 pip install -r requirements.txt
 ```
 
