@@ -49,9 +49,8 @@ The news article metadata is ~1 GB.
 ```
 virtualenv venv
 source venv/bin/activate
-pip install lxml==3.3.3
-pip install cchardet==0.3.5
-pip install requests==2.2.1
+wget https://github.com/deepmind/rc-data/raw/master/requirements.txt
+pip install -r requirements.txt
 ```
 
 You may need to install `libxml2` development packages to install `lxml`:
