@@ -672,6 +672,7 @@ def DownloadMode(corpus, request_parallelism):
     request_parallelism: The number of concurrent download requests.
   """
 
+  missing_urls = []
   for dataset in datasets:
     print 'Downloading URLs for the %s set:' % dataset
 
@@ -698,7 +699,8 @@ def DownloadMode(corpus, request_parallelism):
     except KeyboardInterrupt:
       print 'Interrupted by user'
 
-  missing_urls = list(set(urls) - set(collected_urls))
+    missing_urls.extend(set(urls) - set(collected_urls))
+
   WriteUrls('%s/missing_urls.txt' % corpus, missing_urls)
 
   if missing_urls:
