@@ -99,5 +99,13 @@ Questions are stored in [cnn/dailymail]/questions/ in the following format:
 deactivate
 ```
 
+## Verifying Test Sets
+
+```
+wget https://github.com/deepmind/rc-data/raw/master/expected_[cnn/dailymail]_test.txt
+comm -3 <(cat expected_[cnn/dailymail]_test.txt) <(ls [cnn/dailymail]/questions/test/)
+```
+
+The filenames of the questions in the first column are missing generated questions. No output means everything is downloaded and generated correctly.
 
 [arxiv]: http://arxiv.org/abs/1506.03340
