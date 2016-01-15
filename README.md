@@ -19,6 +19,10 @@ year = "2015",
 }
 ```
 
+## Download Processed Version
+
+In case the script does not work you can also download the processed data sets from [http://cs.nyu.edu/~kcho/DMQA/]. This should help in situations where the underlying data is not accessible (Wayback Machine partially down).
+
 ## Prerequisites
 
 Python 2.7, `wget`, `libxml2`, `libxslt` and `virtualenv`. `libxml2` must be
