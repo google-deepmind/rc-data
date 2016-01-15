@@ -23,7 +23,9 @@ year = "2015",
 
 In case the script does not work you can also download the processed data sets from [http://cs.nyu.edu/~kcho/DMQA/]. This should help in situations where the underlying data is not accessible (Wayback Machine partially down).
 
-## Prerequisites
+## Running the Script
+
+### Prerequisites
 
 Python 2.7, `wget`, `libxml2`, `libxslt` and `virtualenv`. `libxml2` must be
 version 2.9.1.
@@ -32,7 +34,7 @@ version 2.9.1.
 sudo pip install virtualenv
 ```
 
-## Download Script
+### Download Script
 
 ```
 mkdir rc-data
@@ -40,7 +42,7 @@ cd rc-data
 wget https://github.com/deepmind/rc-data/raw/master/generate_questions.py
 ```
 
-## Download and Extract Metadata
+### Download and Extract Metadata
 
 ```
 wget https://storage.googleapis.com/deepmind-data/20150824/data.tar.gz -O - | tar -xz --strip-components=1
@@ -48,7 +50,7 @@ wget https://storage.googleapis.com/deepmind-data/20150824/data.tar.gz -O - | ta
 
 The news article metadata is ~1 GB.
 
-## Enter Virtual Environment and Install Packages
+### Enter Virtual Environment and Install Packages
 
 ```
 virtualenv venv
@@ -63,7 +65,7 @@ You may need to install `libxml2` development packages to install `lxml`:
 sudo apt-get install libxml2-dev libxslt-dev
 ```
 
-## Download URLs
+### Download URLs
 
 ```
 python generate_questions.py --corpus=[cnn/dailymail] --mode=download
@@ -74,7 +76,7 @@ unavailable. The script can be run again and will cache
 URLs that already have been downloaded. Generation of questions can run
 without all URLs downloaded successfully.
 
-## Generate Questions
+### Generate Questions
 
 ```
 python generate_questions.py --corpus=[cnn/dailymail] --mode=generate
@@ -97,13 +99,13 @@ Questions are stored in [cnn/dailymail]/questions/ in the following format:
 [Entity mapping]
 ```
 
-## Deactivate Virtual Environment
+### Deactivate Virtual Environment
 
 ```
 deactivate
 ```
 
-## Verifying Test Sets
+### Verifying Test Sets
 
 ```
 wget https://github.com/deepmind/rc-data/raw/master/expected_[cnn/dailymail]_test.txt
