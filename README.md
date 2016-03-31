@@ -27,11 +27,12 @@ In case the script does not work you can also download the processed data sets f
 
 ### Prerequisites
 
-Python 2.7, `wget`, `libxml2`, `libxslt` and `virtualenv`. `libxml2` must be
-version 2.9.1.
+Python 2.7, `wget`, `libxml2`, `libxslt`, `python-dev` and `virtualenv`. `libxml2` must be version 2.9.1. 
+You can install `libxslt` from here: [http://xmlsoft.org/libxslt/downloads.html](http://xmlsoft.org/libxslt/downloads.html)
 
 ```
 sudo pip install virtualenv
+sudo apt-get install python-dev
 ```
 
 ### Download Script
