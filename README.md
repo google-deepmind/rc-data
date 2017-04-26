@@ -46,7 +46,7 @@ wget https://github.com/deepmind/rc-data/raw/master/generate_questions.py
 ### Download and Extract Metadata
 
 ```
-wget https://storage.googleapis.com/deepmind-data/20150824/data.tar.gz -O - | tar -xz --strip-components=1
+wget https://storage.googleapis.com/deepmind-data/20150824/data.tar.gz -o - | tar -xz --strip-components=1
 ```
 
 The news article metadata is ~1 GB.
